@@ -129,7 +129,7 @@
         ${u(o)}
       </div>
     </div>
-  </div>`,m=e=>{history.pushState(null,``,e),window.dispatchEvent(new PopStateEvent(`popstate`))},h=`cartItems`,g=()=>{try{let e=localStorage.getItem(h);return e?JSON.parse(e):[]}catch(e){return console.error(e),[]}};let _=g(),v=[];function y(){localStorage.setItem(h,JSON.stringify(_)),v.forEach(e=>e(_))}const b={getState:()=>_,setState:e=>{_=[...e],y()},subscribe:e=>(v.push(e),e(_),()=>{v=v.filter(t=>t!==e)})},x={addItem:e=>{let t=b.getState(),n=t.find(t=>t.productId===e.productId),r;r=n?t.map(t=>t.productId===e.productId?{...t,quantity:t.quantity+e.quantity}:t):[...t,{...e}],b.setState(r)},deleteItem:e=>{let t=b.getState(),n=t.filter(t=>t.productId!==e);b.setState(n)},updateQuantity:(e,t)=>{let n=b.getState(),r=n.map(n=>{if(n.productId===e){let e=Math.min(Math.max(1,t),n.stock);return{...n,quantity:e}}return n});b.setState(r)},clearItem:()=>{b.setState([])},subscribe:e=>b.subscribe(e),getState:()=>b.getState()};function S(){let e=x.getState();return e.length}const C=e=>`<div
+  </div>`,m=e=>{history.pushState(null,``,e),window.dispatchEvent(new PopStateEvent(`popstate`))},h=`cartItems`,g=()=>{try{let e=localStorage.getItem(h);return e?JSON.parse(e):[]}catch(e){return console.error(e),[]}};let _=g(),v=[];function y(){localStorage.setItem(h,JSON.stringify(_)),v.forEach(e=>e(_))}const b={getState:()=>_,setState:e=>{_=[...e],y()},subscribe:e=>(v.push(e),e(_),()=>{v=v.filter(t=>t!==e)})},x={addItem:e=>{let t=b.getState(),n=t.find(t=>t.productId===e.productId),r;r=n?t.map(t=>t.productId===e.productId?{...t,quantity:t.quantity+e.quantity}:t):[...t,{...e}],b.setState(r)},deleteItem:e=>{let t=b.getState(),n=t.filter(t=>t.productId!==e);b.setState(n)},updateQuantity:(e,t)=>{let n=b.getState(),r=n.map(n=>{if(n.productId===e){let e=Math.min(Math.max(1,t),n.stock);return{...n,quantity:e}}return n});b.setState(r)},clearItem:()=>{b.setState([])},subscribe:e=>b.subscribe(e),getState:()=>b.getState()};function te(){let e=x.getState();return e.length}const S=e=>`<div
     class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden product-card"
     data-product-id="${e.productId}"
   >
@@ -158,7 +158,7 @@
         장바구니 담기
       </button>
     </div>
-  </div>`;document.addEventListener(`click`,e=>{let t=e.target.closest(`.add-to-cart-btn`);if(t){let e=t.closest(`.product-card`);if(!e)return;let n=e.dataset.productId,r=e.querySelector(`img`)?.src,i=e.querySelector(`h3`)?.textContent,a=e.querySelector(`.text-lg.font-bold.text-gray-900`)?.textContent,o={productId:n,title:i,image:r,lprice:a,quantity:1};x.addItem(o);return}let n=e.target.closest(`.product-card`);if(n){let e=n.dataset.productId;m(`${Q}product/${e}`)}});const w=()=>`<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
+  </div>`;document.addEventListener(`click`,e=>{let t=e.target.closest(`.add-to-cart-btn`);if(t){let e=t.closest(`.product-card`);if(!e)return;let n=e.dataset.productId,r=e.querySelector(`img`)?.src,i=e.querySelector(`h3`)?.textContent,a=e.querySelector(`.text-lg.font-bold.text-gray-900`)?.textContent,o={productId:n,title:i,image:r,lprice:a,quantity:1};x.addItem(o);return}let n=e.target.closest(`.product-card`);if(n){let e=n.dataset.productId;m(`${Q}product/${e}`)}});const C=()=>`<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
     <div class="aspect-square bg-gray-200"></div>
     <div class="p-3">
       <div class="h-4 bg-gray-200 rounded mb-2"></div>
@@ -166,7 +166,7 @@
       <div class="h-5 bg-gray-200 rounded w-1/2 mb-3"></div>
       <div class="h-8 bg-gray-200 rounded"></div>
     </div>
-  </div>`,te=({products:e=[],isLoading:t=!1,total:n=0,hasNext:r=!1})=>{function i(){return t&&e.length===0?Array.from({length:4}).map(()=>w()).join(``):e.map(e=>C(e)).join(``)}function a(e){return e?`<div class="text-center py-4 text-sm text-gray-500">상품을 불러오는 중...</div>`:`<div class="text-center py-4 text-sm text-gray-500">모든 상품을 확인했습니다</div>`}return` <div class="mb-6">
+  </div>`,w=({products:e=[],isLoading:t=!1,total:n=0,hasNext:r=!1})=>{function i(){return t&&e.length===0?Array.from({length:4}).map(()=>C()).join(``):e.map(e=>S(e)).join(``)}function a(e){return e?`<div class="text-center py-4 text-sm text-gray-500">상품을 불러오는 중...</div>`:`<div class="text-center py-4 text-sm text-gray-500">모든 상품을 확인했습니다</div>`}return` <div class="mb-6">
     <div>
       <!-- 상품 개수 정보 -->
       <div class="mb-4 text-sm text-gray-600">총 <span class="font-medium text-gray-900">${n}개</span>의 상품</div>
@@ -185,7 +185,7 @@
       ${s({type:`home`,cartCount:t})}
       <main class="max-w-md mx-auto px-4 py-4">
         ${p({search:e.search,categories:e.categories,category1:e.category1,category2:e.category2,isLoading:e.isCategoryLoading,limit:e.limit,sort:e.sort})}
-        ${te({isLoading:e.isLoading,products:e.products,total:e.total,hasNext:e.hasNext})}
+        ${w({isLoading:e.isLoading,products:e.products,total:e.total,hasNext:e.hasNext})}
       </main>
       ${T()}
     </div>
@@ -206,7 +206,7 @@
     </div>
     <h3 class="text-sm font-medium text-gray-900 mb-1 line-clamp-2">${e.title}</h3>
     <p class="text-sm font-bold text-blue-600">${Number(e.lprice).toLocaleString()}원</p>
-  </div>`;document.addEventListener(`click`,e=>{let t=e.target.closest(`.related-product-card`);if(t){let e=t.dataset.productId;m(`/product/${e}`)}});const K=({products:e=[]})=>`<div class="bg-white rounded-lg shadow-sm">
+  </div>`;document.addEventListener(`click`,e=>{let t=e.target.closest(`.related-product-card`);if(t){let e=t.dataset.productId;m(`${Q}product/${e}`)}});const K=({products:e=[]})=>`<div class="bg-white rounded-lg shadow-sm">
     <div class="p-4 border-b border-gray-200">
       <h2 class="text-lg font-bold text-gray-900">관련 상품</h2>
       <p class="text-sm text-gray-600">같은 카테고리의 다른 상품들</p>
@@ -550,4 +550,4 @@
         </div>
       </div>
     </div>
-  `};function se(){let e=document.querySelector(`header`),t=document.querySelector(`.cart-modal`);e&&!t&&e.insertAdjacentHTML(`afterend`,oe({count:0}));function n(){let e=document.querySelector(`.cart-modal`);e&&e.remove()}let r=document.querySelector(`#cart-modal-close-btn`),i=document.querySelector(`.cart-modal-overlay`);r&&i&&(r.addEventListener(`click`,n),i.addEventListener(`click`,n))}function ce(){document.addEventListener(`click`,e=>{let t=e.target.closest(`#cart-icon-btn`);t&&se()})}const Q=`/front_6th_chapter1-1/`,le=()=>r(async()=>{let{worker:e}=await import(`./browser-C5kS9mQK.js`);return{worker:e}},[]).then(({worker:e})=>e.start({onUnhandledRequest:`bypass`,serviceWorker:{url:`${Q.slice(0,-1)}/mockServiceWorker.js`}}));async function $(){let e=a(),t=S();if(e===`/`)V(t);else if(e.startsWith(`/product/`)){let n=e.split(`/product/`)[1];await J(n,t)}else Z();x.subscribe(e=>{let t=document.querySelector(`#cart-icon-btn`);if(!t)return;let n=t.querySelector(`span`);n&&n.remove(),t.insertAdjacentHTML(`beforeend`,o(e.length))}),ce()}window.addEventListener(`popstate`,$),le().then($);
+  `};function se(){let e=document.querySelector(`header`),t=document.querySelector(`.cart-modal`);e&&!t&&e.insertAdjacentHTML(`afterend`,oe({count:0}));function n(){let e=document.querySelector(`.cart-modal`);e&&e.remove()}let r=document.querySelector(`#cart-modal-close-btn`),i=document.querySelector(`.cart-modal-overlay`);r&&i&&(r.addEventListener(`click`,n),i.addEventListener(`click`,n))}function ce(){document.addEventListener(`click`,e=>{let t=e.target.closest(`#cart-icon-btn`);t&&se()})}const Q=`/front_6th_chapter1-1/`,le=()=>r(async()=>{let{worker:e}=await import(`./browser-C5kS9mQK.js`);return{worker:e}},[]).then(({worker:e})=>e.start({onUnhandledRequest:`bypass`,serviceWorker:{url:`${Q.slice(0,-1)}/mockServiceWorker.js`}}));async function $(){let e=a(),t=te();if(e===`/`)V(t);else if(e.startsWith(`/product/`)){let n=e.split(`/product/`)[1];await J(n,t)}else Z();x.subscribe(e=>{let t=document.querySelector(`#cart-icon-btn`);if(!t)return;let n=t.querySelector(`span`);n&&n.remove(),t.insertAdjacentHTML(`beforeend`,o(e.length))}),ce()}window.addEventListener(`popstate`,$),le().then($);
