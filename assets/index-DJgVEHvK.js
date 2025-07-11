@@ -158,7 +158,7 @@
         장바구니 담기
       </button>
     </div>
-  </div>`;document.addEventListener(`click`,e=>{let t=e.target.closest(`.add-to-cart-btn`);if(t){let e=t.closest(`.product-card`);if(!e)return;let n=e.dataset.productId,r=e.querySelector(`img`)?.src,i=e.querySelector(`h3`)?.textContent,a=e.querySelector(`.text-lg.font-bold.text-gray-900`)?.textContent,o={productId:n,title:i,image:r,lprice:a,quantity:1};x.addItem(o);return}let n=e.target.closest(`.product-card`);if(n){let e=n.dataset.productId;m(`${Q}}product/${e}`)}});const w=()=>`<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
+  </div>`;document.addEventListener(`click`,e=>{let t=e.target.closest(`.add-to-cart-btn`);if(t){let e=t.closest(`.product-card`);if(!e)return;let n=e.dataset.productId,r=e.querySelector(`img`)?.src,i=e.querySelector(`h3`)?.textContent,a=e.querySelector(`.text-lg.font-bold.text-gray-900`)?.textContent,o={productId:n,title:i,image:r,lprice:a,quantity:1};x.addItem(o);return}let n=e.target.closest(`.product-card`);if(n){let e=n.dataset.productId;m(`${Q}product/${e}`)}});const w=()=>`<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
     <div class="aspect-square bg-gray-200"></div>
     <div class="p-3">
       <div class="h-4 bg-gray-200 rounded mb-2"></div>
